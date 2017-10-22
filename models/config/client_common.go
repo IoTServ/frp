@@ -27,6 +27,7 @@ var ClientCommonCfg *ClientCommonConf
 
 // client common config
 type ClientCommonConf struct {
+	Host		  string
 	ConfigFile        string
 	ServerAddr        string
 	ServerPort        int64
