@@ -40,14 +40,14 @@ var usage string = `frpc is the client of frp
 
 Usage: 
     frpc [-c config_file] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
-    frpc [-h config_host] [-u frpc_common_user] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
+    frpc -u frpc_common_user [-h config_host] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
     frpc [-c config_file] --reload
-    frpc [-h config_host] -u frpc_common_user --reload
+    frpc -u frpc_common_user [-h config_host] --reload
     frpc -h | --help
     frpc -v | --version
 
 Options:
-	-h config_host              设置配置文件服务器:frp.iotserv.com
+	-h host                     设置配置文件服务器:frp.iotserv.com
 	-u user                     设置配置文件服务器上Common上设置的用户名
 	-c config_file              设置配置文件
 	-L log_file                 设置日志文件
