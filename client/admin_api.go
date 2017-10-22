@@ -52,8 +52,8 @@ func (svr *Service) apiReload(w http.ResponseWriter, r *http.Request, _ httprout
 	}()
 
 	log.Info("Http request: [/api/reload]")
-	if config.ClientCommonCfg.Host != "" {
-		resp, err = http.Get("http://"+config.ClientCommonCfg.Host+"/api/get-frc-conf?user="+config.ClientCommonCfg.User)
+	if config.ClientCommonCfg.ConfigHost != "" {
+		resp, err = http.Get("http://"+config.ClientCommonCfg.ConfigHost+"/api/get-frc-conf?user="+config.ClientCommonCfg.User)
 		if err != nil {
 			panic(err)
 		}
@@ -86,5 +86,10 @@ func (svr *Service) apiReload(w http.ResponseWriter, r *http.Request, _ httprout
 	svr.ctl.reloadConf(pxyCfgs, vistorCfgs)
 	log.Info("success reload conf")
 	//svr.Close()
+	return
+}
+func (svr *Service) index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	indexhtml:="<a href=\"/api/netreload\">重新加载配置</a>"
+	w.Write([]byte(indexhtml))
 	return
 }
