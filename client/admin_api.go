@@ -52,14 +52,14 @@ func (svr *Service) apiReload(w http.ResponseWriter, r *http.Request, _ httprout
 	}()
 
 	log.Info("Http request: [/api/reload]")
-	if config.ClientCommonCfg.Host == "" {
-		conf, err = ini.LoadFile("./frpc.ini")
-	}else {
+	if config.ClientCommonCfg.Host != "" {
 		resp, err = http.Get("http://"+config.ClientCommonCfg.Host+"/api/get-frc-conf?user="+config.ClientCommonCfg.User)
 		if err != nil {
 			panic(err)
 		}
 		conf, err = ini.Load(resp.Body)
+	}else {
+		conf, err = ini.LoadFile(config.ClientCommonCfg.ConfigFile)
 	}
 	if err != nil {
 		res.Code = 1
