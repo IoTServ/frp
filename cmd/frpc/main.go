@@ -39,14 +39,15 @@ import (
 var usage string = `frpc is the client of frp
 
 Usage: 
-    frpc [-h 配置文件服务器] [-u 用户名] [-c config_file] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
+    frpc [-c config_file] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
+    frpc [-h config_host] [-u frpc_common_user] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
     frpc [-c config_file] --reload
-    frpc --reload
+    frpc [-h config_host] -u frpc_common_user --reload
     frpc -h | --help
     frpc -v | --version
 
 Options:
-	-h host                     设置配置文件服务器:frp.iotserv.com
+	-h config_host              设置配置文件服务器:frp.iotserv.com
 	-u user                     设置配置文件服务器上Common上设置的用户名
 	-c config_file              设置配置文件
 	-L log_file                 设置日志文件
@@ -85,7 +86,7 @@ func main() {
 	}
 	if args["-c"] != nil {
 		confFile = args["-c"].(string)
-		config.ClientCommonCfg.Host = ""
+		config.ClientCommonCfg.ConfigHost = ""
 		conf, err = ini.LoadFile(confFile)
 		host = ""
 		if err != nil {
@@ -109,7 +110,7 @@ func main() {
 		os.Exit(1)
 	}
 	config.ClientCommonCfg.ConfigFile = confFile
-	config.ClientCommonCfg.Host = host
+	config.ClientCommonCfg.ConfigHost = host
 	// check if reload command
 	if args["--reload"] != nil {
 		if args["--reload"].(bool) {
