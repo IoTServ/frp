@@ -36,29 +36,25 @@ import (
 	"frp/utils/version"
 )
 
-var (
-	configFile string = "./frpc.ini"
-)
-
 var usage string = `frpc is the client of frp
 
 Usage: 
     frpc [-h 配置文件服务器] [-u 用户名] [-c config_file] [-L log_file] [--log-level=<log_level>] [--server-addr=<server_addr>]
     frpc [-c config_file] --reload
-	frpc [-h 配置文件服务器] [-u 用户名] --reload
+    frpc --reload
     frpc -h | --help
     frpc -v | --version
 
 Options:
-	-h host                     set config server host eg:frp.iotserv.com
-	-u user                     set Common user at frp.iotserv.com or other config server
-	-c config_file              set config file
-	-L log_file                 set output log file, including console
-	--log-level=<log_level>     set log level: debug, info, warn, error
-	--server-addr=<server_addr> addr which frps is listening for, example: 0.0.0.0:7000
-	--reload                    reload configure file without program exit
-	--help                      show this screen
-	-v --version                show version
+	-h host                     设置配置文件服务器:frp.iotserv.com
+	-u user                     设置配置文件服务器上Common上设置的用户名
+	-c config_file              设置配置文件
+	-L log_file                 设置日志文件
+	--log-level=<log_level>     设置日志等级
+	--server-addr=<server_addr> 设置frps的服务器地址, example: 0.0.0.0:7000
+	--reload                    热更新配置
+	--help                      帮助
+	-v --version                版本号
 `
 
 func main() {
