@@ -30,10 +30,10 @@ import (
 	docopt "github.com/docopt/docopt-go"
 	ini "github.com/vaughan0/go-ini"
 
-	"frp/client"
-	"frp/models/config"
-	"frp/utils/log"
-	"frp/utils/version"
+	"github.com/fatedier/frp/client"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/utils/log"
+	"github.com/fatedier/frp/utils/version"
 )
 
 var usage string = `frpc is the client of frp
