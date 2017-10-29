@@ -21,9 +21,9 @@ import (
 	"github.com/julienschmidt/httprouter"
 	ini "github.com/vaughan0/go-ini"
 
-	"frp/models/config"
-	"frp/utils/log"
-	_"frp/models/msg"
+	"github.com/fatedier/frp/models/config"
+	"github.com/fatedier/frp/utils/log"
+	_"github.com/fatedier/frp/models/msg"
 	_"fmt"
 )
 
